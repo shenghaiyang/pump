@@ -1,0 +1,4 @@
+include ':pump'
+include ':sample'
+
+rootProject.name = "pump-parent"
