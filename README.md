@@ -2,9 +2,62 @@
 
 Generate inflater classes for view binding, store them and easy to access.
 
+## Snapshots
+
+#### Adding dependencies
+
+First, add the pump-gradle-plugin plugin to your project's root build.gradle file:
+
+```groovy
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath "com.shenghaiyang.pump:pump-gradle-plugin:4.0.1-r1-SNAPSHOT"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
+}
+```
+
+Then, apply the Gradle plugin and add these dependencies in your app/build.gradle file:
+
+```groovy
+apply plugin: 'com.android.application'
+apply plugin: 'com.shenghaiyang.pump'
+
+dependencies {
+    implementation "com.shenghaiyang.pump:pump:4.0.1-r1-SNAPSHOT"
+}
+```
+
+#### Inflate ViewBinding
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        ActivityMainBinding mainBinding = Pump.inflate(ActivityMainBinding.class, getLayoutInflater());
+        setContentView(mainBinding.getRoot());
+    }
+}
+```
+
 ## TODO
 
-- upload to maven central
 - incremental support
 
 ## License
@@ -24,4 +77,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-

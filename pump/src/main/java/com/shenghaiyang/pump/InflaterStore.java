@@ -5,11 +5,6 @@ import androidx.annotation.NonNull;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Save all view binding mapping
- *
- * @author shenghaiyang
- */
 final class InflaterStore {
 
     private static final InflaterStore INSTANCE;

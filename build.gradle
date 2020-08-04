@@ -1,17 +1,23 @@
 buildscript {
 
     ext.versions = [
-            'minSdk': 14,
+            'minSdk'    : 14,
             'compileSdk': 29,
     ]
+
+    ext.pump_version = '4.0.1-r1-SNAPSHOT'
 
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
+
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.12.0'
+        classpath "com.shenghaiyang.pump:pump-gradle-plugin:$pump_version"
     }
 }
 
@@ -19,6 +25,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
     }
 }
 

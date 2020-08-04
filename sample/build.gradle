@@ -28,6 +28,6 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation project(":pump")
+    implementation "com.shenghaiyang.pump:pump:$pump_version"
 
 }

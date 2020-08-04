@@ -1,15 +1,11 @@
-package com.shenghaiyang.pump.gradle
+package com.shenghaiyang.pump.gradle.inflater
 
+import com.shenghaiyang.pump.gradle.*
 import org.objectweb.asm.ClassWriter
 import org.objectweb.asm.Label
 import org.objectweb.asm.Opcodes
 
 
-/**
- * View binding inflater class adapter
- *
- * @author shenghaiyang
- */
 object InflaterClassAdapter {
 
     @JvmStatic

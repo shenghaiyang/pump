@@ -7,9 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 
-/**
- * @author shenghaiyang
- */
 public final class Pump {
 
     @NonNull

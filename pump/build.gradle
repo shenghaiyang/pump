@@ -16,3 +16,5 @@ android {
 dependencies {
     implementation 'androidx.databinding:viewbinding:4.0.1'
 }
+
+apply plugin: "com.vanniktech.maven.publish"

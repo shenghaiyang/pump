@@ -2,15 +2,12 @@ package com.shenghaiyang.pump.gradle
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
+import java.io.File
 import java.util.jar.JarEntry
 import java.util.jar.JarFile
 import java.util.jar.JarOutputStream
 
-/**
- * Base pump transform class
- *
- * @author shenghaiyang
- */
+
 abstract class AbsPumpTransform : Transform() {
 
     override fun getName(): String = javaClass.name
@@ -46,9 +43,10 @@ abstract class AbsPumpTransform : Transform() {
             JarOutputStream(fos).use { jos ->
                 while (entries.hasMoreElements()) {
                     val jarEntry = entries.nextElement()
+
                     jarFile.getInputStream(jarEntry).use { jis ->
                         val entryContent = jis.readBytes()
-                        transformJarEntry(jarEntry, entryContent, jos)
+                        transformJarEntry(jarEntry, entryContent, jos, dest)
                     }
                 }
             }
@@ -62,7 +60,7 @@ abstract class AbsPumpTransform : Transform() {
      * @param content content of the jar entry
      * @param jos dest jar output stream, implements should not close it
      */
-    abstract fun transformJarEntry(jarEntry: JarEntry, content: ByteArray, jos: JarOutputStream)
+    abstract fun transformJarEntry(jarEntry: JarEntry, content: ByteArray, jos: JarOutputStream, dest: File)
 
     private fun transformDirectoryInputs(directoryInputs: Collection<DirectoryInput>, outputProvider: TransformOutputProvider) {
         directoryInputs.forEach { dirInput ->

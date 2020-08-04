@@ -8,11 +8,6 @@ import java.util.jar.JarEntry
 import java.util.jar.JarOutputStream
 import java.util.zip.CRC32
 
-/**
- * Pump utils
- *
- * @author shenghaiyang
- */
 
 internal const val NAME_OBJECT = "java/lang/Object"
 
@@ -74,5 +69,11 @@ internal fun JarOutputStream.putNewEntry(name: String, content: ByteArray) {
  * @return true for view binding class, otherwise false
  */
 internal fun ClassReader.isViewBindingClass() = this.interfaces.contains(NAME_VIEW_BINDING)
+
+/**
+ * check the class reader is inflater store
+ * @return true for inflater store class, otherwise false
+ */
+internal fun ClassReader.isStoreClass() = NAME_STORE == this.className
 
 internal fun JarEntry.isClassEntry() = this.name.endsWith(CLASS_FILE_SUFFIX)
